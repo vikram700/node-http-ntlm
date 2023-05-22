@@ -115,8 +115,9 @@ function createType1Message(options){
 	return 'NTLM ' + buf.toString('base64');
 }
 
-function parseType2Message(rawmsg, callback){
+function parseType2Message(res, rawmsg, callback){
 	var match = rawmsg.match(/NTLM (.+)?/);
+	console.log(JSON.stringify(res.headers));
 	if(!match || !match[1]) {
 		callback(new Error("Couldn't find NTLM in the message type2 coming from the server"));
 		return null;
